@@ -1,0 +1,29 @@
+---
+# Becamex IDC > XLNT UI xxxx
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: becamex-xlnt-dev
+  name: sample-cicd
+spec:
+  replicas: 1
+  selector:
+     matchLabels:
+       app: sample-cicd
+  template:
+    metadata:
+      labels:
+        app: sample-cicd
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: sample-cicd
+        image: nginx
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: VERSION
+          value: "V5.1"
+        - name: SHA
+          value: SSAAHHBB
